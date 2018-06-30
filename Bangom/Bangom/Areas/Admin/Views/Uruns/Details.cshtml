@@ -1,0 +1,67 @@
+﻿@model Bangom.Models.Urun
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Urun</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunDetay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunDetay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunFiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunFiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Durum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Durum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategori.KategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategori.KategoriAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marka.MarkaAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marka.MarkaAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UrunID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

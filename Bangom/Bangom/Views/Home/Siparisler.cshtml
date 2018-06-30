@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Bangom.Models.Siparis>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int sayac = 0;
+}
+
+<br /><br /><br /><br /><br /><br /><br />
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <center>
+                            <h3 class="box-title">Siparişlerim</h3>
+                        </center>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <center>
+                            <table id="tablo" class="table table-bordered table-striped">
+                                <tr style="height:40px">
+                                    <th>Sipariş Tarihi</th>
+                                    <th>Banka Adı</th>
+                                    <th>Kargo Adı</th>
+                                    <th>Tutar</th>
+                                    <th>Durum</th>
+                                </tr>
+                                @foreach (var item in Model)
+                                {
+                                    <tr style="height:60px">
+                                        <td>@item.SiparisTarihi</td>
+                                        <td>@item.Banka.BankaAdi</td>
+                                        @if (item.KargoID != null)
+                                        {
+                                            <td>@item.Kargo.KargoAdi</td>
+                                        }
+                                        else
+                                        {
+                                            <td>Kargo Seçilmedi</td>
+                                        }
+                                        <td>@item.SiparisTutar</td>
+                                        <td>@item.Durum</td>
+                                        @if (Convert.ToString(item.Durum) == "Onaylanmadı")
+                                        {
+                                            <td><center><span class="glyphicon fa fa-fw fa-clock-o" style="color:red"></span></center></td>
+                                        }
+                                        else
+                                        {
+                                            <td><center><span class="glyphicon fa fa-fw fa-check-circle" style="color:blue"></span></center></td>
+                                        }
+                                    </tr>
+                                    sayac++;
+                                }
+                            </table>
+                            @if (sayac == 0)
+                            {
+                                <div>Siparişiniz Bulunmamaktadır...</div>
+                            }
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

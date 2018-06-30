@@ -1,0 +1,35 @@
+﻿@model Bangom.Models.Banka
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Banka</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BankaAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BankaAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BankaResmi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BankaResmi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BankaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

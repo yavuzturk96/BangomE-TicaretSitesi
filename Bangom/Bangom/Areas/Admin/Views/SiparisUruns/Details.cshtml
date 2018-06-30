@@ -1,0 +1,59 @@
+﻿@model Bangom.Models.SiparisUrun
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SiparisUrun</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunFiyati)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunFiyati)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Siparis.Durum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Siparis.Durum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Urun.UrunAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Urun.UrunAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uye.UyeAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uye.UyeAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SiparisUrunID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

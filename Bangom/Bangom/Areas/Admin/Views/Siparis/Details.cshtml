@@ -1,0 +1,67 @@
+﻿@model Bangom.Models.Siparis
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Siparis</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisTutar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisTutar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Durum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Durum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SiparisTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiparisTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Banka.BankaAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Banka.BankaAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kargo.KargoAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kargo.KargoAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Uye.UyeAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Uye.UyeAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SiparisID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

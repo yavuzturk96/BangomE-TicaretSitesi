@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Bangom.Models.Urun>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunFoto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunDetay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrunFiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Durum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategori.KategoriAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Marka.MarkaAdi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @{
+                if (item.UrunFoto != null) //Databaseden resim çekme
+                {
+                    var base64 = Convert.ToBase64String(item.UrunFoto);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    <img src='@imgSrc' style="max-width:100px; max-height:100px;" />
+                }
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrunAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrunDetay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UrunFiyat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Durum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategori.KategoriAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Marka.MarkaAdi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.UrunID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.UrunID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.UrunID })
+        </td>
+    </tr>
+}
+
+</table>

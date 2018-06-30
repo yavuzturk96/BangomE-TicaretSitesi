@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c6ac8965332d4348b9420cb8f77088f2" Name="Diagram1">
+        <EntityTypeShape EntityType="BangomModel.Banka" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangomModel.Kargo" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangomModel.Kategori" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangomModel.Marka" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangomModel.Siparis" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangomModel.SiparisUrun" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangomModel.Stok" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangomModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangomModel.Urun" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangomModel.UrunKampanya" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangomModel.UrunResim" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangomModel.Uye" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BangomModel.Yetki" Width="1.5" PointX="1.5" PointY="19.625" IsExpanded="true" />
+        <AssociationConnector Association="BangomModel.FK_Siparis_Banka" ManuallyRouted="false" />
+        <AssociationConnector Association="BangomModel.FK_Siparis_Kargo" ManuallyRouted="false" />
+        <AssociationConnector Association="BangomModel.FK_Urun_Kategori" ManuallyRouted="false" />
+        <AssociationConnector Association="BangomModel.FK_Urun_Marka" ManuallyRouted="false" />
+        <AssociationConnector Association="BangomModel.FK_Siparis_Uye" ManuallyRouted="false" />
+        <AssociationConnector Association="BangomModel.FK_SiparisUrun_Siparis" ManuallyRouted="false" />
+        <AssociationConnector Association="BangomModel.FK_SiparisUrun_Urun" ManuallyRouted="false" />
+        <AssociationConnector Association="BangomModel.FK_SiparisUrun_Uye" ManuallyRouted="false" />
+        <AssociationConnector Association="BangomModel.FK_Stok_Urun" ManuallyRouted="false" />
+        <AssociationConnector Association="BangomModel.FK_UrunKampanya_Urun" ManuallyRouted="false" />
+        <AssociationConnector Association="BangomModel.FK_UrunResim_Urun" ManuallyRouted="false" />
+        <AssociationConnector Association="BangomModel.FK_Uye_Yetki" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

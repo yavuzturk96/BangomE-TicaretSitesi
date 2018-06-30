@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Bangom.Models.Kargo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KargoAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KargoResmi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KargoAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KargoResmi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.KargoID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.KargoID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.KargoID })
+        </td>
+    </tr>
+}
+
+</table>

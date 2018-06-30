@@ -1,0 +1,73 @@
+﻿@model Bangom.Models.Urun
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Urun</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunDetay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunDetay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UrunFiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UrunFiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Durum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Durum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategori.KategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategori.KategoriAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marka.MarkaAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marka.MarkaAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

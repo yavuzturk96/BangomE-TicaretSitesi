@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BangomModelStoreContainer" CdmEntityContainer="BangomEntities">
+    <EntitySetMapping Name="Banka">
+      <EntityTypeMapping TypeName="BangomModel.Banka">
+        <MappingFragment StoreEntitySet="Banka">
+          <ScalarProperty Name="BankaID" ColumnName="BankaID" />
+          <ScalarProperty Name="BankaAdi" ColumnName="BankaAdi" />
+          <ScalarProperty Name="BankaResmi" ColumnName="BankaResmi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kargo">
+      <EntityTypeMapping TypeName="BangomModel.Kargo">
+        <MappingFragment StoreEntitySet="Kargo">
+          <ScalarProperty Name="KargoID" ColumnName="KargoID" />
+          <ScalarProperty Name="KargoAdi" ColumnName="KargoAdi" />
+          <ScalarProperty Name="KargoResmi" ColumnName="KargoResmi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategori">
+      <EntityTypeMapping TypeName="BangomModel.Kategori">
+        <MappingFragment StoreEntitySet="Kategori">
+          <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+          <ScalarProperty Name="KategoriAdi" ColumnName="KategoriAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marka">
+      <EntityTypeMapping TypeName="BangomModel.Marka">
+        <MappingFragment StoreEntitySet="Marka">
+          <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
+          <ScalarProperty Name="MarkaAdi" ColumnName="MarkaAdi" />
+          <ScalarProperty Name="MarkaResmi" ColumnName="MarkaResmi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Siparis">
+      <EntityTypeMapping TypeName="BangomModel.Siparis">
+        <MappingFragment StoreEntitySet="Siparis">
+          <ScalarProperty Name="SiparisID" ColumnName="SiparisID" />
+          <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+          <ScalarProperty Name="SiparisTutar" ColumnName="SiparisTutar" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="SiparisTarihi" ColumnName="SiparisTarihi" />
+          <ScalarProperty Name="BankaID" ColumnName="BankaID" />
+          <ScalarProperty Name="KargoID" ColumnName="KargoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SiparisUrun">
+      <EntityTypeMapping TypeName="BangomModel.SiparisUrun">
+        <MappingFragment StoreEntitySet="SiparisUrun">
+          <ScalarProperty Name="SiparisUrunID" ColumnName="SiparisUrunID" />
+          <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+          <ScalarProperty Name="SiparisID" ColumnName="SiparisID" />
+          <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+          <ScalarProperty Name="UrunFiyati" ColumnName="UrunFiyati" />
+          <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stok">
+      <EntityTypeMapping TypeName="BangomModel.Stok">
+        <MappingFragment StoreEntitySet="Stok">
+          <ScalarProperty Name="StokID" ColumnName="StokID" />
+          <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+          <ScalarProperty Name="Adet" ColumnName="Adet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="BangomModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Urun">
+      <EntityTypeMapping TypeName="BangomModel.Urun">
+        <MappingFragment StoreEntitySet="Urun">
+          <ScalarProperty Name="UrunFoto" ColumnName="UrunFoto" />
+          <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+          <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+          <ScalarProperty Name="UrunDetay" ColumnName="UrunDetay" />
+          <ScalarProperty Name="UrunFiyat" ColumnName="UrunFiyat" />
+          <ScalarProperty Name="Durum" ColumnName="Durum" />
+          <ScalarProperty Name="KategoriID" ColumnName="KategoriID" />
+          <ScalarProperty Name="MarkaID" ColumnName="MarkaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UrunKampanya">
+      <EntityTypeMapping TypeName="BangomModel.UrunKampanya">
+        <MappingFragment StoreEntitySet="UrunKampanya">
+          <ScalarProperty Name="UrunKampanyaID" ColumnName="UrunKampanyaID" />
+          <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+          <ScalarProperty Name="UrunKampanyaAdi" ColumnName="UrunKampanyaAdi" />
+          <ScalarProperty Name="YeniFiyat" ColumnName="YeniFiyat" />
+          <ScalarProperty Name="UrunKampanyaBaslangic" ColumnName="UrunKampanyaBaslangic" />
+          <ScalarProperty Name="UrunKampanyaBitis" ColumnName="UrunKampanyaBitis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UrunResim">
+      <EntityTypeMapping TypeName="BangomModel.UrunResim">
+        <MappingFragment StoreEntitySet="UrunResim">
+          <ScalarProperty Name="UrunResimID" ColumnName="UrunResimID" />
+          <ScalarProperty Name="UrunID" ColumnName="UrunID" />
+          <ScalarProperty Name="UrunResmi" ColumnName="UrunResmi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uye">
+      <EntityTypeMapping TypeName="BangomModel.Uye">
+        <MappingFragment StoreEntitySet="Uye">
+          <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+          <ScalarProperty Name="YetkiID" ColumnName="YetkiID" />
+          <ScalarProperty Name="UyeAdi" ColumnName="UyeAdi" />
+          <ScalarProperty Name="UyeSoyadi" ColumnName="UyeSoyadi" />
+          <ScalarProperty Name="UyeResmi" ColumnName="UyeResmi" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yetki">
+      <EntityTypeMapping TypeName="BangomModel.Yetki">
+        <MappingFragment StoreEntitySet="Yetki">
+          <ScalarProperty Name="YetkiID" ColumnName="YetkiID" />
+          <ScalarProperty Name="YetkiAdi" ColumnName="YetkiAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="BangomModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="BangomModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="BangomModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="BangomModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BangomModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="BangomModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BangomModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BangomModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BangomModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

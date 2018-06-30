@@ -1,0 +1,27 @@
+﻿@model Bangom.Models.Kategori
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kategori</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KategoriAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.KategoriID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

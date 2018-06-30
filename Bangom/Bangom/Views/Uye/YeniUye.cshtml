@@ -1,0 +1,194 @@
+﻿@model Bangom.Models.Uye
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<div class="container">
+
+    @using (Html.BeginForm("YeniUye", "Uye", FormMethod.Post, new { enctype = "multipart/form-data", id = "formKapsayici" }))
+    {
+        <div class="form-horizontal">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <hr />
+            <hr />
+            <h4>
+                <i class="ace-icon fa fa-users blue"></i>
+                Yeni Kayıt
+            </h4>
+
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group"></div>
+            <p> Gerekli Bilgileri Giriniz: </p>
+            <span class="alert-danger h2">@ViewBag.Uyarı</span>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Sifre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Sifre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Sifre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.UyeAdi, "Üye Adı:", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UyeAdi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UyeAdi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.UyeSoyadi, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UyeSoyadi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UyeSoyadi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UyeResmi, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UyeResmi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UyeResmi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<label class="block clearfix">
+                    <span class="block input-icon input-icon-right">
+                        <input type="password" class="form-control" placeholder="Şifre Tekrarı" />
+                        <i class="ace-icon fa fa-retweet"></i>
+                    </span>
+                </label>*@
+
+            @*<label class="block">
+                    <input type="checkbox" class="ace" />
+                    <span class="lbl">
+                        <a href="#">Kullanıcı Sözleşmesini</a>
+                        kabul ediyorum.
+                    </span>
+                </label>*@
+
+            <div class="space-24"></div>
+            <div class="clearfix">
+                <button type="reset" class="width-30 pull-left btn btn-sm">
+                    <i class="ace-icon fa fa-refresh"></i>
+                    <span class="bigger-110">Sıfırla</span>
+                </button>
+
+                <button type="submit" id="btnUyeOl" class="width-65 pull-right btn btn-sm btn-success">
+                    <span class="bigger-110">Kayıt Ol</span>
+
+                    <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                </button>
+            </div>
+
+
+        </div>
+
+    }
+    <div class="toolbar center">
+        <a href="~/Uye/Login" data-target="#login-box" class="back-to-login-link">
+            <i class="ace-icon fa fa-arrow-left"></i>
+            Girişe geri dön
+        </a>
+    </div>
+
+
+
+    @*@using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Uye</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.YetkiID, "YetkiID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("YetkiID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.YetkiID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UyeAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UyeAdi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UyeAdi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UyeSoyadi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UyeSoyadi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UyeSoyadi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UyeResmi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UyeResmi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UyeResmi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Sifre, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Sifre, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Sifre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }*@
+</div>

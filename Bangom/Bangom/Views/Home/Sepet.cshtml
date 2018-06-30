@@ -1,0 +1,206 @@
+﻿@model IEnumerable<Bangom.Models.SiparisUrun>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br /><br /><br /><br /><br /><br />
+<head>
+    <title>Colo Shop Categories</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Colo Shop Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/styles/bootstrap4/bootstrap.min.css">
+    <link href="~/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/categories_styles.css">
+    <link rel="stylesheet" type="text/css" href="~/styles/categories_responsive.css">
+</head>
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                        <center>
+                            <h3 class="box-title">Sepet</h3>
+                        </center>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <center>
+                            <table id="tablo" class="table table-bordered table-striped">
+                                <tr style="height:40px">
+                                    <th>Ürün Resmi</th>
+                                    <th>Ürün Adı</th>
+                                    <th>Ürün Fıyatı</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                                @*@foreach (var item in Model)
+            {
+                <tr style="height:60px">
+                    @{
+                        <td>
+                            @if (item.Urun.UrunFoto != null) //Databaseden resim çekme
+                            {
+                                var base64 = Convert.ToBase64String(item.Urun.UrunFoto);
+                                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                <img src="@imgSrc" alt="~/Home/Urun/@item.UrunID">
+                            }
+                        </td>
+                    }
+                    <td>@item.UrunAdi</td>
+                    <td>@item.UrunFiyati</td>
+                    <td><center><span class="glyphicon fa fa-fw fa-check-circle" style="color:blue"></span></center></td>
+                    <td>
+                        <input type="button" id="@item.SiparisUrunID" class="red_button" value="Kaldır" onclick="alert('Kaldırıldı')" />
+                    </td>
+                </tr>
+            }*@
+                            </table>
+                            <button id="sil">Seçilenleri Kaldır</button>
+                            <button id="siparisEt">Seçilenleri Sipariş Et</button>
+                            <form action="~/Home/Siparisler">
+                                <input type="submit" value="Siparişlerimi Görüntüle" />
+                            </form>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ 
+<script src="~/js/jquery-3.2.1.min.js"></script>
+<script src="~/styles/bootstrap4/popper.js"></script>
+<script src="~/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="~/plugins/Isotope/isotope.pkgd.min.js"></script>
+<script src="~/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="~/plugins/easing/easing.js"></script>
+<script src="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="~/js/categories_custom.js"></script>
+
+@*<script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
+<script src="~/Scripts/jquery.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+@*<script src="~/Scripts/jquery.js"></script>*@
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    //$(document).ready(function () {
+    //    $('input[type="button"]').click(function (e) {
+    //        var siparisUrunID = e.target.id;
+    //        $.ajax({
+    //            url: '/Home/SepettenKaldır/',
+    //            data: { siparisUrunID: siparisUrunID },
+    //            type: 'POST',
+    //            dataType: 'json',
+    //            success: function (data) {
+    //                SepetGetir();
+    //                alert("Başarılı  " + yorumunuz);
+    //            }
+
+    //        });
+    //    });
+    //})
+
+    //setInterval(SepetGetir, 100);
+    $(document).ready(function () {
+        SepetGetir();
+    });
+    function SepetGetir() {
+        $.ajax({
+            type: 'GET',
+            url: '/Home/Sepettekiler',
+            dataType: "JSON",
+            success: function (data) {
+                $('#tablo').html("");
+                var tablo = ' <tr style="height:40px"><th>Ürün Resmi</th><th>Ürün Adı</th><th>Ürün Fıyatı</th><th></th><th>Seç</th></tr>';
+                var bosSepet = '<div class="container">Sepetinizde Ürününüz Bulunmamaktadır... </div>';
+                $('#tablo').append(tablo);
+                var sayac = 0;
+                $(data.Result).each(function (item) {
+                    var x = data.Result[item].SiparisID;
+                    if (x == null)
+                    {
+                        var checkbox = '<input type="checkbox" name="secili" value=' + data.Result[item].SiparisUrunID + ' />';
+                        // var button = '<input type="submit" id="Sil" name="Sil" value=' + data.Result[item].SiparisUrunID + ' />';
+
+                        //var button = '<input type="button" id="urunSil" name="Sil" value=' + data.Result[item].SiparisUrunID + ' ></button>';
+                        //var radio = '<input type="radio" id="sepetsil" value=' + data.Result[item].SiparisUrunID + ' name="radiobutton"/>';
+                        var makale = '<tr><td></td><td>' + data.Result[item].UrunAdi + '</td><td>'
+                            + data.Result[item].UrunFiyati + ' TL </td><td><input type="submit" id="gonder" class="red_button" value="'
+                            + data.Result[item].SiparisUrunID + '" onclick="alert("Kaldırıldı")" /></td><td>' + checkbox + '</td></tr>';
+                        $('#tablo').append(makale);
+                        sayac++;
+                    }
+                });
+                if (sayac == 0)
+                {
+                    $('#tablo').append(bosSepet);
+                }
+            }
+        });
+    }
+    
+   
+    $("#sil").click(function () {
+        var id = [];
+        var sayac = 0;
+        $("input[name='secili']:checked").each(function () {
+            id[sayac] = $(this).val();
+            sayac++;
+        });
+
+        $.ajax({
+            type: "POST",
+            url: '/Home/Sil',
+            data: { id },
+            dataType: "json",
+            success: function (gelenDeg) {
+                if (gelenDeg === "1") {
+                    alert("Silme işlemi başarıyla gerçekleşti!");
+                    SepetGetir();
+                    SepetSay();
+                }
+            },
+            error: function () {
+                alert("Makale(ler) Silinirken hata oluştu!");
+            }
+        });
+    });
+
+
+    $("#siparisEt").click(function () {
+        var id = [];
+        var sayac = 0;
+        $("input[name='secili']:checked").each(function () {
+            id[sayac] = $(this).val();
+            sayac++;
+        });
+
+        $.ajax({
+            type: "POST",
+            url: '/Home/SiparisEt',
+            data: { id, sayac },
+            dataType: "json",
+            success: function (gelenDeg) {
+                if (gelenDeg === "1") {
+                    alert("Seçilen ürünler başarıyla sipariş edildi!");
+                    SepetGetir();
+                    SepetSay();
+                }
+            },
+            error: function () {
+                alert("Sipariş edilirken hata oluştu!");
+            }
+        });
+    });
+
+</script>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Bangom.Models.Siparis>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SiparisTutar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Durum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SiparisTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Banka.BankaAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kargo.KargoAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Uye.UyeAdi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiparisTutar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Durum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SiparisTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Banka.BankaAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kargo.KargoAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Uye.UyeAdi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SiparisID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SiparisID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SiparisID })
+        </td>
+    </tr>
+}
+
+</table>

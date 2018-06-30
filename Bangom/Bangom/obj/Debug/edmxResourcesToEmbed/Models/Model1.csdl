@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BangomModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Banka">
+    <Key>
+      <PropertyRef Name="BankaID" />
+    </Key>
+    <Property Name="BankaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BankaAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BankaResmi" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Siparis" Relationship="Self.FK_Siparis_Banka" FromRole="Banka" ToRole="Siparis" />
+  </EntityType>
+  <EntityType Name="Kargo">
+    <Key>
+      <PropertyRef Name="KargoID" />
+    </Key>
+    <Property Name="KargoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KargoAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="KargoResmi" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Siparis" Relationship="Self.FK_Siparis_Kargo" FromRole="Kargo" ToRole="Siparis" />
+  </EntityType>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="KategoriID" />
+    </Key>
+    <Property Name="KategoriID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KategoriAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Urun" Relationship="Self.FK_Urun_Kategori" FromRole="Kategori" ToRole="Urun" />
+  </EntityType>
+  <EntityType Name="Marka">
+    <Key>
+      <PropertyRef Name="MarkaID" />
+    </Key>
+    <Property Name="MarkaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MarkaAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MarkaResmi" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Urun" Relationship="Self.FK_Urun_Marka" FromRole="Marka" ToRole="Urun" />
+  </EntityType>
+  <EntityType Name="Siparis">
+    <Key>
+      <PropertyRef Name="SiparisID" />
+    </Key>
+    <Property Name="SiparisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UyeID" Type="Int32" />
+    <Property Name="SiparisTutar" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Durum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SiparisTarihi" Type="DateTime" Precision="3" />
+    <Property Name="BankaID" Type="Int32" />
+    <Property Name="KargoID" Type="Int32" />
+    <NavigationProperty Name="Banka" Relationship="Self.FK_Siparis_Banka" FromRole="Siparis" ToRole="Banka" />
+    <NavigationProperty Name="Kargo" Relationship="Self.FK_Siparis_Kargo" FromRole="Siparis" ToRole="Kargo" />
+    <NavigationProperty Name="Uye" Relationship="Self.FK_Siparis_Uye" FromRole="Siparis" ToRole="Uye" />
+    <NavigationProperty Name="SiparisUrun" Relationship="Self.FK_SiparisUrun_Siparis" FromRole="Siparis" ToRole="SiparisUrun" />
+  </EntityType>
+  <EntityType Name="SiparisUrun">
+    <Key>
+      <PropertyRef Name="SiparisUrunID" />
+    </Key>
+    <Property Name="SiparisUrunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UrunID" Type="Int32" />
+    <Property Name="SiparisID" Type="Int32" />
+    <Property Name="UrunAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UrunFiyati" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="UyeID" Type="Int32" />
+    <NavigationProperty Name="Siparis" Relationship="Self.FK_SiparisUrun_Siparis" FromRole="SiparisUrun" ToRole="Siparis" />
+    <NavigationProperty Name="Urun" Relationship="Self.FK_SiparisUrun_Urun" FromRole="SiparisUrun" ToRole="Urun" />
+    <NavigationProperty Name="Uye" Relationship="Self.FK_SiparisUrun_Uye" FromRole="SiparisUrun" ToRole="Uye" />
+  </EntityType>
+  <EntityType Name="Stok">
+    <Key>
+      <PropertyRef Name="StokID" />
+    </Key>
+    <Property Name="StokID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UrunID" Type="Int32" />
+    <Property Name="Adet" Type="Int32" />
+    <NavigationProperty Name="Urun" Relationship="Self.FK_Stok_Urun" FromRole="Stok" ToRole="Urun" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Urun">
+    <Key>
+      <PropertyRef Name="UrunID" />
+    </Key>
+    <Property Name="UrunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UrunAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UrunDetay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UrunFiyat" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Durum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="KategoriID" Type="Int32" />
+    <Property Name="MarkaID" Type="Int32" />
+    <NavigationProperty Name="Kategori" Relationship="Self.FK_Urun_Kategori" FromRole="Urun" ToRole="Kategori" />
+    <NavigationProperty Name="Marka" Relationship="Self.FK_Urun_Marka" FromRole="Urun" ToRole="Marka" />
+    <NavigationProperty Name="SiparisUrun" Relationship="Self.FK_SiparisUrun_Urun" FromRole="Urun" ToRole="SiparisUrun" />
+    <NavigationProperty Name="Stok" Relationship="Self.FK_Stok_Urun" FromRole="Urun" ToRole="Stok" />
+    <NavigationProperty Name="UrunKampanya" Relationship="Self.FK_UrunKampanya_Urun" FromRole="Urun" ToRole="UrunKampanya" />
+    <NavigationProperty Name="UrunResim" Relationship="Self.FK_UrunResim_Urun" FromRole="Urun" ToRole="UrunResim" />
+    <Property Name="UrunFoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="UrunKampanya">
+    <Key>
+      <PropertyRef Name="UrunKampanyaID" />
+    </Key>
+    <Property Name="UrunKampanyaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UrunID" Type="Int32" />
+    <Property Name="UrunKampanyaAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="YeniFiyat" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="UrunKampanyaBaslangic" Type="DateTime" Precision="3" />
+    <Property Name="UrunKampanyaBitis" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Urun" Relationship="Self.FK_UrunKampanya_Urun" FromRole="UrunKampanya" ToRole="Urun" />
+  </EntityType>
+  <EntityType Name="UrunResim">
+    <Key>
+      <PropertyRef Name="UrunResimID" />
+    </Key>
+    <Property Name="UrunResimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UrunID" Type="Int32" />
+    <Property Name="UrunResmi" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Urun" Relationship="Self.FK_UrunResim_Urun" FromRole="UrunResim" ToRole="Urun" />
+  </EntityType>
+  <EntityType Name="Uye">
+    <Key>
+      <PropertyRef Name="UyeID" />
+    </Key>
+    <Property Name="UyeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YetkiID" Type="Int32" />
+    <Property Name="UyeAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UyeSoyadi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UyeResmi" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Sifre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Telefon" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Siparis" Relationship="Self.FK_Siparis_Uye" FromRole="Uye" ToRole="Siparis" />
+    <NavigationProperty Name="SiparisUrun" Relationship="Self.FK_SiparisUrun_Uye" FromRole="Uye" ToRole="SiparisUrun" />
+    <NavigationProperty Name="Yetki" Relationship="Self.FK_Uye_Yetki" FromRole="Uye" ToRole="Yetki" />
+  </EntityType>
+  <EntityType Name="Yetki">
+    <Key>
+      <PropertyRef Name="YetkiID" />
+    </Key>
+    <Property Name="YetkiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="YetkiAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Uye" Relationship="Self.FK_Uye_Yetki" FromRole="Yetki" ToRole="Uye" />
+  </EntityType>
+  <Association Name="FK_Siparis_Banka">
+    <End Role="Banka" Type="Self.Banka" Multiplicity="0..1" />
+    <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Banka">
+        <PropertyRef Name="BankaID" />
+      </Principal>
+      <Dependent Role="Siparis">
+        <PropertyRef Name="BankaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siparis_Kargo">
+    <End Role="Kargo" Type="Self.Kargo" Multiplicity="0..1" />
+    <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kargo">
+        <PropertyRef Name="KargoID" />
+      </Principal>
+      <Dependent Role="Siparis">
+        <PropertyRef Name="KargoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urun_Kategori">
+    <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
+    <End Role="Urun" Type="Self.Urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="KategoriID" />
+      </Principal>
+      <Dependent Role="Urun">
+        <PropertyRef Name="KategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urun_Marka">
+    <End Role="Marka" Type="Self.Marka" Multiplicity="0..1" />
+    <End Role="Urun" Type="Self.Urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Marka">
+        <PropertyRef Name="MarkaID" />
+      </Principal>
+      <Dependent Role="Urun">
+        <PropertyRef Name="MarkaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siparis_Uye">
+    <End Role="Uye" Type="Self.Uye" Multiplicity="0..1" />
+    <End Role="Siparis" Type="Self.Siparis" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uye">
+        <PropertyRef Name="UyeID" />
+      </Principal>
+      <Dependent Role="Siparis">
+        <PropertyRef Name="UyeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SiparisUrun_Siparis">
+    <End Role="Siparis" Type="Self.Siparis" Multiplicity="0..1" />
+    <End Role="SiparisUrun" Type="Self.SiparisUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Siparis">
+        <PropertyRef Name="SiparisID" />
+      </Principal>
+      <Dependent Role="SiparisUrun">
+        <PropertyRef Name="SiparisID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SiparisUrun_Urun">
+    <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
+    <End Role="SiparisUrun" Type="Self.SiparisUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urun">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="SiparisUrun">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SiparisUrun_Uye">
+    <End Role="Uye" Type="Self.Uye" Multiplicity="0..1" />
+    <End Role="SiparisUrun" Type="Self.SiparisUrun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uye">
+        <PropertyRef Name="UyeID" />
+      </Principal>
+      <Dependent Role="SiparisUrun">
+        <PropertyRef Name="UyeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stok_Urun">
+    <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
+    <End Role="Stok" Type="Self.Stok" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urun">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="Stok">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UrunKampanya_Urun">
+    <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
+    <End Role="UrunKampanya" Type="Self.UrunKampanya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urun">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="UrunKampanya">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UrunResim_Urun">
+    <End Role="Urun" Type="Self.Urun" Multiplicity="0..1" />
+    <End Role="UrunResim" Type="Self.UrunResim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urun">
+        <PropertyRef Name="UrunID" />
+      </Principal>
+      <Dependent Role="UrunResim">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uye_Yetki">
+    <End Role="Yetki" Type="Self.Yetki" Multiplicity="0..1" />
+    <End Role="Uye" Type="Self.Uye" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Yetki">
+        <PropertyRef Name="YetkiID" />
+      </Principal>
+      <Dependent Role="Uye">
+        <PropertyRef Name="YetkiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BangomEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Banka" EntityType="Self.Banka" />
+    <EntitySet Name="Kargo" EntityType="Self.Kargo" />
+    <EntitySet Name="Kategori" EntityType="Self.Kategori" />
+    <EntitySet Name="Marka" EntityType="Self.Marka" />
+    <EntitySet Name="Siparis" EntityType="Self.Siparis" />
+    <EntitySet Name="SiparisUrun" EntityType="Self.SiparisUrun" />
+    <EntitySet Name="Stok" EntityType="Self.Stok" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Urun" EntityType="Self.Urun" />
+    <EntitySet Name="UrunKampanya" EntityType="Self.UrunKampanya" />
+    <EntitySet Name="UrunResim" EntityType="Self.UrunResim" />
+    <EntitySet Name="Uye" EntityType="Self.Uye" />
+    <EntitySet Name="Yetki" EntityType="Self.Yetki" />
+    <AssociationSet Name="FK_Siparis_Banka" Association="Self.FK_Siparis_Banka">
+      <End Role="Banka" EntitySet="Banka" />
+      <End Role="Siparis" EntitySet="Siparis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparis_Kargo" Association="Self.FK_Siparis_Kargo">
+      <End Role="Kargo" EntitySet="Kargo" />
+      <End Role="Siparis" EntitySet="Siparis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urun_Kategori" Association="Self.FK_Urun_Kategori">
+      <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="Urun" EntitySet="Urun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urun_Marka" Association="Self.FK_Urun_Marka">
+      <End Role="Marka" EntitySet="Marka" />
+      <End Role="Urun" EntitySet="Urun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siparis_Uye" Association="Self.FK_Siparis_Uye">
+      <End Role="Uye" EntitySet="Uye" />
+      <End Role="Siparis" EntitySet="Siparis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SiparisUrun_Siparis" Association="Self.FK_SiparisUrun_Siparis">
+      <End Role="Siparis" EntitySet="Siparis" />
+      <End Role="SiparisUrun" EntitySet="SiparisUrun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SiparisUrun_Urun" Association="Self.FK_SiparisUrun_Urun">
+      <End Role="Urun" EntitySet="Urun" />
+      <End Role="SiparisUrun" EntitySet="SiparisUrun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SiparisUrun_Uye" Association="Self.FK_SiparisUrun_Uye">
+      <End Role="Uye" EntitySet="Uye" />
+      <End Role="SiparisUrun" EntitySet="SiparisUrun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stok_Urun" Association="Self.FK_Stok_Urun">
+      <End Role="Urun" EntitySet="Urun" />
+      <End Role="Stok" EntitySet="Stok" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UrunKampanya_Urun" Association="Self.FK_UrunKampanya_Urun">
+      <End Role="Urun" EntitySet="Urun" />
+      <End Role="UrunKampanya" EntitySet="UrunKampanya" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UrunResim_Urun" Association="Self.FK_UrunResim_Urun">
+      <End Role="Urun" EntitySet="Urun" />
+      <End Role="UrunResim" EntitySet="UrunResim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uye_Yetki" Association="Self.FK_Uye_Yetki">
+      <End Role="Yetki" EntitySet="Yetki" />
+      <End Role="Uye" EntitySet="Uye" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BangomModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BangomModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>
