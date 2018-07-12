@@ -7,7 +7,7 @@ AJAX, HTML 5, CSS
 # Ekran Görüntüleri
 <p>
 <a href="https://github.com/yavuzturk96/BangomE-TicaretSitesi/blob/master/Bangom%20Ekran%20G%C3%B6r%C3%BCnt%C3%BCleri/AnaSayfa2.png" target="_blank">
-<img src=https://github.com/yavuzturk96/BangomE-TicaretSitesi/blob/master/Bangom%20Ekran%20G%C3%B6r%C3%BCnt%C3%BCleri/AnaSayfa2.png" width="200" style="max-width:100%;"></a>
+<img src="https://github.com/yavuzturk96/BangomE-TicaretSitesi/blob/master/Bangom%20Ekran%20G%C3%B6r%C3%BCnt%C3%BCleri/AnaSayfa2.png" width="200" style="max-width:100%;"></a>
   
 <a href="https://github.com/yavuzturk96/BangomE-TicaretSitesi/blob/master/Bangom%20Ekran%20G%C3%B6r%C3%BCnt%C3%BCleri/AnaSayfa.png" target="_blank">
 <img src="https://github.com/yavuzturk96/BangomE-TicaretSitesi/blob/master/Bangom%20Ekran%20G%C3%B6r%C3%BCnt%C3%BCleri/AnaSayfa.png" width="200" style="max-width:100%;"></a>
