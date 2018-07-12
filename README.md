@@ -1,4 +1,7 @@
 # BangomE-TicaretSitesi
+Gerçekleştirilen projede eklenen ürünlerin online olarak satılmasına olanak veren, elektronik ortamda alış veriş imkanı sunan bir e-ticaret sitesi hazırlanmıştır.
+Kullanılan Teknoloji ve Diller: Visual Studio, Microsoft SQL Server, MVC Asp .NET, JavaScript
+AJAX, HTML 5, CSS 
 
 # Uygulama Ekran Görüntüleri
 <p>
