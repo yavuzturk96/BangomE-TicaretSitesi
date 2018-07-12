@@ -4,7 +4,7 @@ Gerçekleştirilen projede eklenen ürünlerin online olarak satılmasına olana
 Kullanılan Teknoloji ve Diller: Visual Studio, Microsoft SQL Server, MVC Asp .NET, JavaScript
 AJAX, HTML 5, CSS 
 
-# Uygulama Ekran Görüntüleri
+# Ekran Görüntüleri
 <p>
 <a href="https://github.com/yavuzturk96/BangomE-TicaretSitesi/blob/master/Bangom%20Ekran%20G%C3%B6r%C3%BCnt%C3%BCleri/AnaSayfa2.png" target="_blank">
 <img src=https://github.com/yavuzturk96/BangomE-TicaretSitesi/blob/master/Bangom%20Ekran%20G%C3%B6r%C3%BCnt%C3%BCleri/AnaSayfa2.png" width="200" style="max-width:100%;"></a>
